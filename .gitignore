@@ -1,0 +1,7 @@
+node_modules
+.env
+dist
+.parcel-cache
+server/index.js
+server/db.js
+server/dev.ts
