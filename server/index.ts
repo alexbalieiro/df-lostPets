@@ -11,7 +11,7 @@ const staticDirPath = path.resolve(__dirname, "../client");
     })
   );
 
-  app.post("/test", async (req, res) => {
+  app.get("/test", async (req, res) => {
     const profile = await getProfiles(4);
     res.json(profile);
   });
