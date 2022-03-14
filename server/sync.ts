@@ -5,4 +5,4 @@ sequelize.sync({ force: true }).then((res) => {
   console.log(res);
 });
 
-//comando: ts-node ./be-src/sync.ts
+//comando: ts-node ./server/sync.ts

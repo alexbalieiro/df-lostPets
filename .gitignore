@@ -5,3 +5,7 @@ dist
 server/index.js
 server/db.js
 server/dev.ts
+server/models/connection.js
+server/models/index.js
+server/models/user.js
+server/controllers/users-controllers.js
