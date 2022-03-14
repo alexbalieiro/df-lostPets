@@ -18,6 +18,7 @@
     "@vaadin/router": "^1.7.4",
     "algoliasearch": "^4.13.0",
     "cloudinary": "^1.28.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",

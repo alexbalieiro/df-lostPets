@@ -9,3 +9,4 @@ server/models/connection.js
 server/models/index.js
 server/models/user.js
 server/controllers/users-controllers.js
+server/sync.ts

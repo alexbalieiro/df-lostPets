@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as path from "path";
+import * as cors from "cors";
 import {
   authMiddleware,
   createUser,
@@ -19,6 +20,7 @@ const staticDirPath = path.resolve(__dirname, "../client");
 (function () {
   const port = process.env.PORT || 3000;
   const app = express();
+  app.use(cors());
 
   app.use(
     express.json({
