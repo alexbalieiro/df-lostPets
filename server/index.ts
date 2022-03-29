@@ -29,7 +29,7 @@ const staticDirPath = path.resolve(__dirname, "../client");
   );
 
   app.get("/users/search", async (req, res) => {
-    const user = await searchUser(req.body.email);
+    const user = await searchUser(req.query.email);
     res.json(user);
   });
 
