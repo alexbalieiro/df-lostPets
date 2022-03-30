@@ -70,3 +70,7 @@ export async function getToken(userData) {
     return false;
   }
 }
+export async function allAuth() {
+  const auth = await Auth.findAll();
+  return auth;
+}

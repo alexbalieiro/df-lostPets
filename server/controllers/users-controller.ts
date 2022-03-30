@@ -16,3 +16,7 @@ export async function findUser(userData) {
   const user = await User.findByPk(userData._user.id);
   return user;
 }
+export async function allUser() {
+  const user = await User.findAll();
+  return user;
+}

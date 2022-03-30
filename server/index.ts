@@ -2,12 +2,13 @@ import * as express from "express";
 import * as path from "path";
 import * as cors from "cors";
 import {
+  allAuth,
   authMiddleware,
   createUser,
   getToken,
   updateUser,
 } from "./controllers/auth-controller";
-import { searchUser, findUser } from "./controllers/users-controller";
+import { searchUser, findUser, allUser } from "./controllers/users-controller";
 import {
   createPet,
   searchPets,
@@ -28,6 +29,14 @@ const staticDirPath = path.resolve(__dirname, "../client");
     })
   );
 
+  app.get("/users/all", async (req, res) => {
+    const user = await allUser();
+    res.json(user);
+  });
+  app.get("/auth/all", async (req, res) => {
+    const auth = await allAuth();
+    res.json(auth);
+  });
   app.get("/users/search", async (req, res) => {
     const user = await searchUser(req.query.email);
     res.json(user);
