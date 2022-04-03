@@ -48,7 +48,9 @@ export async function updateUser(userData) {
     const auth: any = await Auth.findOne({ where: { user_id: userId } });
     const passwordAuth = auth.password;
     if (passwordHasheado == passwordAuth) {
-      return { error: "La contraseña es la misma" };
+      return {
+        error: "Actualmente estas usando esa contraseña, ingresa una diferente",
+      };
     } else {
       return await Auth.update(
         { password: passwordHasheado },
