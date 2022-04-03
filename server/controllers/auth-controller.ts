@@ -34,25 +34,34 @@ export async function createUser(userData) {
 export async function updateUser(userData) {
   const { fullname, email, password } = userData;
   const passwordHasheado = getSHA256ofString(password);
-  await User.update(
-    { fullname },
-    {
-      where: {
-        email,
-      },
-    }
-  );
   const user = await User.findOne({ where: { email } });
-  const userId: any = user.get("id");
-  const respuesta = await Auth.update(
-    { password: passwordHasheado },
-    {
-      where: {
-        user_id: userId,
-      },
+  if (user) {
+    await User.update(
+      { fullname },
+      {
+        where: {
+          email,
+        },
+      }
+    );
+    const userId: any = user.get("id");
+    const auth: any = await Auth.findOne({ where: { user_id: userId } });
+    const passwordAuth = auth.password;
+    if (passwordHasheado == passwordAuth) {
+      return { error: "La contraseña es la misma" };
+    } else {
+      return await Auth.update(
+        { password: passwordHasheado },
+        {
+          where: {
+            user_id: userId,
+          },
+        }
+      );
     }
-  );
-  return respuesta;
+  } else {
+    return { error: true };
+  }
 }
 export async function getToken(userData) {
   const { email, password } = userData;
