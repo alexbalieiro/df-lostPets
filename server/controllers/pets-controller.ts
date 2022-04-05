@@ -62,18 +62,26 @@ export async function searchPets(id) {
   });
   return pets;
 }
-export async function updatePet(idPet, dataPet) {
-  const respuesta = await Pet.update(
-    { ...dataPet },
-    {
-      where: {
-        id: idPet,
-      },
-    }
-  );
-  const indexItem = dataToIndex(dataPet, idPet);
-  index.partialUpdateObject(indexItem);
-  return respuesta;
+export async function updatePet(idPet, petData) {
+  if (petData.img) {
+    const image = await cloudinary.uploader.upload(petData.img, {
+      resource_type: "image",
+      discard_original_filename: true,
+      width: 1000,
+    });
+    const imageURL = image.secure_url;
+    const respuesta = await Pet.update(
+      { ...petData, img: imageURL },
+      {
+        where: {
+          id: idPet,
+        },
+      }
+    );
+    // const indexItem = dataToIndex(dataPet, idPet);
+    // index.partialUpdateObject(indexItem);
+    return respuesta;
+  }
 }
 export async function nearbyPets(lng, lat) {
   const { hits } = await index.search("", {
