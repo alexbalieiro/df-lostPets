@@ -28,6 +28,10 @@ function dataToIndex(data, id?) {
 }
 
 export async function createPet(id, petData) {
+  console.log(id, "info id");
+  console.log(petData, "info dataPet");
+  console.log(petData.img, "info img");
+
   if (petData.img) {
     const image = await cloudinary.uploader.upload(petData.img, {
       resource_type: "image",
