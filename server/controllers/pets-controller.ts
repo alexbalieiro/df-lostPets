@@ -29,15 +29,15 @@ function dataToIndex(data, id?) {
 
 export async function createPet(id, petData) {
   if (petData.img) {
-    // const image = await cloudinary.uploader.upload(petData.img, {
-    //   resource_type: "image",
-    //   discard_original_filename: true,
-    //   width: 1000,
-    // });
-    // const imageURL = image.secure_url;
+    const image = await cloudinary.uploader.upload(petData.img, {
+      resource_type: "image",
+      discard_original_filename: true,
+      width: 1000,
+    });
+    const imageURL = image.secure_url;
     const pet = await Pet.create({
       ...petData,
-      img: petData.img,
+      img: imageURL,
       userId: id,
     });
     index.saveObject({
