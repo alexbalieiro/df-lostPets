@@ -80,7 +80,7 @@ const staticDirPath = path.resolve(__dirname, "../client");
     const mascotasCercanas = await nearbyPets(req.query.lng, req.query.lat);
     res.json(mascotasCercanas);
   });
-  app.patch("/pets/:petId", async (req, res) => {
+  app.put("/pets/:petId", async (req, res) => {
     const { petId } = req.params;
     const respuesta = await updatePet(petId, req.body);
     res.json(respuesta);
