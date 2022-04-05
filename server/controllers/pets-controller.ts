@@ -78,8 +78,8 @@ export async function updatePet(idPet, petData) {
         },
       }
     );
-    // const indexItem = dataToIndex(dataPet, idPet);
-    // index.partialUpdateObject(indexItem);
+    const indexItem = dataToIndex(petData, idPet);
+    index.partialUpdateObject(indexItem);
     return respuesta;
   }
 }
