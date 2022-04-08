@@ -64,12 +64,17 @@ export async function searchPets(id) {
 }
 export async function updatePet(idPet, petData) {
   if (petData.img) {
-    const image = await cloudinary.uploader.upload(petData.img, {
-      resource_type: "image",
-      discard_original_filename: true,
-      width: 1000,
-    });
-    const imageURL = image.secure_url;
+    let imageURL = "";
+    if (petData.img.length > 87) {
+      const image = await cloudinary.uploader.upload(petData.img, {
+        resource_type: "image",
+        discard_original_filename: true,
+        width: 1000,
+      });
+      imageURL = image.secure_url;
+    } else {
+      imageURL = petData.img;
+    }
     const respuesta = await Pet.update(
       { ...petData, img: imageURL },
       {

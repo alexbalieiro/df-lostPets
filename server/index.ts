@@ -81,8 +81,6 @@ const staticDirPath = path.resolve(__dirname, "../client");
     res.json(mascotasCercanas);
   });
   app.put("/pets/:petId", authMiddleware, async (req, res) => {
-    console.log(req.body);
-
     const { petId } = req.params;
     const respuesta = await updatePet(petId, req.body);
     res.json(respuesta);
