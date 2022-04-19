@@ -14,6 +14,7 @@ import {
   searchPets,
   updatePet,
   nearbyPets,
+  deletePet,
 } from "./controllers/pets-controller";
 import { createReport } from "./controllers/reports-controller";
 const staticDirPath = path.resolve(__dirname, "../client");
@@ -86,9 +87,19 @@ const staticDirPath = path.resolve(__dirname, "../client");
     res.json(respuesta);
   });
 
-  app.post("/reports", async (req, res) => {
-    const respuesta = await createReport(req.body.idPet, req.body);
+  app.delete("/pets/:petId", authMiddleware, async (req, res) => {
+    const { petId } = req.params;
+    const respuesta = await deletePet(petId);
     res.json(respuesta);
+  });
+
+  app.post("/reports", async (req, res) => {
+    try {
+      const respuesta = await createReport(req.body);
+      res.json(respuesta);
+    } catch (err) {
+      console.log("Este es el error: ", err.response.body);
+    }
   });
 
   app.use(express.static(staticDirPath));

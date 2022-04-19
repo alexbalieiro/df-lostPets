@@ -49,6 +49,7 @@ export async function createPet(id, petData) {
         lng: pet.get("last_lng"),
       },
       state: pet.get("state"),
+      userEmail: petData.userEmail,
     });
     return pet;
   }
@@ -62,7 +63,7 @@ export async function searchPets(id) {
   });
   return pets;
 }
-export async function updatePet(idPet, petData) {
+export async function updatePet(petId, petData) {
   if (petData.img) {
     let imageURL = "";
     if (petData.img.length > 87) {
@@ -79,19 +80,36 @@ export async function updatePet(idPet, petData) {
       { ...petData, img: imageURL },
       {
         where: {
-          id: idPet,
+          id: petId,
         },
       }
     );
-    const indexItem = dataToIndex(petData, idPet);
+    const indexItem = dataToIndex(petData, petId);
     index.partialUpdateObject(indexItem);
     return respuesta;
+  } else {
+    const respuesta = await Pet.update(
+      { ...petData },
+      {
+        where: {
+          id: petId,
+        },
+      }
+    );
   }
 }
 export async function nearbyPets(lng, lat) {
   const { hits } = await index.search("", {
     aroundLatLng: [lat, lng].join(","),
-    aroundRadius: 500, //500mts
+    aroundRadius: 5000, //500mts
   });
   return hits;
+}
+export async function deletePet(petId) {
+  const pet = await Pet.findByPk(petId);
+  if (pet) {
+    pet.destroy();
+    index.deleteObject(petId);
+    return { delete: true };
+  } else return { error: "no existe la mascota" };
 }

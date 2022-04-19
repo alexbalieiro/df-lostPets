@@ -1,9 +1,12 @@
-import { Report } from "../models";
-
-export async function createReport(idPet, dataReport) {
-  const report = await Report.create({
-    ...dataReport,
-    petId: idPet,
-  });
-  return report;
+import { sendEmailToUser } from "../lib/sendgrid";
+export async function createReport(dataReport) {
+  const { userEmail, reporterName, phoneNumber, message, petName } = dataReport;
+  const mailEnviado = await sendEmailToUser(
+    userEmail,
+    reporterName,
+    phoneNumber,
+    message,
+    petName
+  );
+  return mailEnviado;
 }
