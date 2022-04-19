@@ -34,10 +34,6 @@ const staticDirPath = path.resolve(__dirname, "../client");
     const user = await allUser();
     res.json(user);
   });
-  app.get("/auth/all", async (req, res) => {
-    const auth = await allAuth();
-    res.json(auth);
-  });
   app.get("/users/search", async (req, res) => {
     const user = await searchUser(req.query.email);
     res.json(user);
