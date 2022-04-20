@@ -16,8 +16,7 @@ import {
   deletePet,
 } from "./controllers/pets-controller";
 import { createReport } from "./controllers/reports-controller";
-const staticDirPath = path.resolve(__dirname, "../client");
-
+const staticDirPath = path.resolve(__dirname, "../dist");
 (function () {
   const port = process.env.PORT || 3000;
   const app = express();
@@ -100,7 +99,7 @@ const staticDirPath = path.resolve(__dirname, "../client");
   app.use(express.static(staticDirPath));
 
   app.get("*", function (req, res) {
-    res.sendFile(staticDirPath);
+    res.sendFile(path.resolve(__dirname, "../dist/index.html"));
   });
 
   app.listen(port, () => {
