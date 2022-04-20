@@ -10,7 +10,6 @@
     "dev": "npm run dev:fe && npm run dev:be",
     "build:be": "tsc",
     "build:fe": "parcel build",
-    "build": "npm run build:be && npm run build:fe",
     "start": "node ./server/index.js"
   },
   "dependencies": {
