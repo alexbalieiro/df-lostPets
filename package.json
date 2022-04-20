@@ -8,8 +8,6 @@
     "dev:fe": "parcel",
     "dev:be": "nodemon --watch 'server/**/*' -e ts --exec 'ts-node ./server/index.ts'",
     "dev": "npm run dev:fe && npm run dev:be",
-    "build:be": "tsc",
-    "build:fe": "parcel build",
     "start": "node ./server/index.js"
   },
   "dependencies": {
