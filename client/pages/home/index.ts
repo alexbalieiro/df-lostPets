@@ -13,6 +13,9 @@ customElements.define(
     addListeners() {
       const geolocationButton = this.querySelector(".button-geolocation");
       geolocationButton.addEventListener("click", () => {
+        function error(err) {
+          console.warn("ERROR(" + err.code + "): " + err.message);
+        }
         navigator.geolocation.getCurrentPosition(async (data) => {
           this.myLat = data.coords.latitude;
           this.myLng = data.coords.longitude;
@@ -34,7 +37,7 @@ customElements.define(
             container.style.fontSize = "16px";
             container.style.fontWeight = "400";
           }
-        });
+        }, error);
       });
     }
 
