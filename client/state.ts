@@ -14,7 +14,6 @@ const state = {
   listeners: [],
 
   recoverToken(callback) {
-    console.log(API_BASE_URL, "SALUDOS HUMANOS");
     const token = sessionStorage.getItem("token") || "";
     fetch(API_BASE_URL + "/me", {
       method: "GET",

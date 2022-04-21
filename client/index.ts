@@ -3,4 +3,6 @@ import "./components/header";
 import "./components/text";
 import "./components/button";
 import "./components/card";
-(function () {})();
+(function () {
+  console.log("SALUDOS HUMANOS");
+})();
