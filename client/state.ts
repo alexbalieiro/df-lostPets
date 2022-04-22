@@ -248,6 +248,7 @@ const state = {
     cs.imgPet = "";
     cs.last_lat = "";
     cs.last_lng = "";
+    cs.petState = "";
     this.setState(cs);
   },
 
