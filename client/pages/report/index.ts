@@ -128,15 +128,16 @@ customElements.define(
         </div>
         <div>
           <div id="map"></div>
-          <text-component type="caption">Ubicación</text-component>
+          <text-component type="caption">
+          Primero haga click en el mapa para indicar las cordenadas de su mascota perdida, luego presione el boton "CERCA DE..." y tendra un lugar destacado cercano como referencia.
+          </text-component>
+          <br>
+          <br>
+          <text-component type="caption">Aquí abajo figurarán las coordenadas cuando las indique en el mapa.</text-component>
           <input type="text" class="input-location">
           <span class="span-cerca-de"></span>
           <button class="cerca-de">Cerca de...</button>
           <span class="validation-location"> </span>
-          <text-component type="caption">
-          Buscá un punto de referencia para reportar a tu mascota.
-          Puede ser una dirección, un barrio o una ciudad.
-          </text-component>
         </div>
         <div>
           <button-component class="button-report" color="rosa">Reportar como perdido</button-component>

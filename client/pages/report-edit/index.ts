@@ -161,7 +161,7 @@ customElements.define(
       if (currentPet.imgPet) {
         this.imageDataURL = currentPet.imgPet;
       } else {
-        this.imageDataURL = imgvacia;
+        Router.go("/my-pets");
       }
       this.render();
       await this.mapbox();
@@ -189,13 +189,14 @@ customElements.define(
         </div>
         <div>
           <div id="map"></div>
+          <text-component type="caption">
+          Haga click en el mapa si desea actualizar las coordenas de su mascota perdida.
+          </text-component>
+          <br>
+          <br>
           <text-component type="caption">Ubicación</text-component>
           <input type="text" class="input-location">
           <span class="validation-location"> </span>
-          <text-component type="caption">
-          Buscá un punto de referencia para reportar a tu mascota.
-          Puede ser una dirección, un barrio o una ciudad.
-          </text-component>
         </div>
         <div>
         <span class="validation-save"> </span>
