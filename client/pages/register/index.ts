@@ -93,6 +93,12 @@ customElements.define(
         flex-direction: column;
         gap:45px;
       }
+      @media (min-width:800px){
+        .main-container{
+          max-width: 600px;
+          margin: 30px auto;
+        }
+      }
       .section-container{
         display: flex;
         flex-direction: column;

@@ -82,6 +82,12 @@ customElements.define(
         flex-direction: column;
         gap:45px;
       }
+      @media (min-width:800px){
+        .main-container{
+          max-width: 700px;
+          margin: 30px auto;
+        }
+      }
       .title{
         text-align: center;
       }

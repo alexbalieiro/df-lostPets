@@ -267,6 +267,7 @@ customElements.define(
       }
       .img-lapiz{
         display: ${withPencil == "true" ? "initial" : "none"};
+        cursor: pointer;
       }
       .located{
         color: green;

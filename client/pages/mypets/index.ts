@@ -45,6 +45,12 @@ customElements.define(
       .main-container{
         padding:15px 20px;
       }
+      @media (min-width:800px){
+        .main-container{
+          max-width: 700px;
+          margin: 30px auto;
+        }
+      }
       .section-container{
         margin-top: 30px;
         display:flex;

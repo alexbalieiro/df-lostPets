@@ -4,7 +4,7 @@ import "dotenv/config";
 import { Auth, User } from "../models";
 const SECRET = process.env.SECRET;
 
-export function getSHA256ofString(text: string) {
+export function hashingPassword(text: string) {
   return crypto.createHash("sha256").update(text).digest("hex");
 }
 export function authMiddleware(req, res, next) {
@@ -26,14 +26,14 @@ export async function createUser(userData) {
   });
   await Auth.create({
     email,
-    password: getSHA256ofString(password),
+    password: hashingPassword(password),
     user_id: user.get("id"),
   });
   return user;
 }
 export async function updateUser(userData) {
   const { fullname, email, password } = userData;
-  const passwordHasheado = getSHA256ofString(password);
+  const passwordHasheado = hashingPassword(password);
   const user = await User.findOne({ where: { email } });
   if (user) {
     await User.update(
@@ -67,7 +67,7 @@ export async function updateUser(userData) {
 }
 export async function getToken(userData) {
   const { email, password } = userData;
-  const passwordHasheado = getSHA256ofString(password);
+  const passwordHasheado = hashingPassword(password);
   const auth = await Auth.findOne({
     where: {
       email,
