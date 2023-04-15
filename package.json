@@ -27,10 +27,10 @@
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^2.7.1",
     "nodemon": "^2.0.15",
-    "parcel": "^2.3.2",
-    "pg": "^8.7.1",
+    "parcel": "^2.8.3",
+    "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.14.0",
+    "sequelize": "^6.31.0",
     "typescript": "^4.6.2"
   },
   "devDependencies": {
@@ -38,6 +38,7 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
+    "punycode": "^1.4.1",
     "querystring-es3": "^0.2.1",
     "url": "^0.11.0"
   }

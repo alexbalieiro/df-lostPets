@@ -1,7 +1,7 @@
 const imgvacia = require("url:../../img/img-vacia.png");
-import { dropzoneUpload } from "../../lib/dropzone";
-import { initMap, mapbox, initSearchForm } from "../../lib/mapbox";
 import { Router } from "@vaadin/router";
+import { dropzoneUpload } from "../../lib/dropzone";
+import { initMap, initSearchForm, mapbox } from "../../lib/mapbox";
 import { state } from "../../state";
 customElements.define(
   "report-page",
